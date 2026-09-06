@@ -2,3 +2,4 @@ agno==3.0.6
 google-genai
 python-dotenv
 streamlit
+youtube_transcript_api

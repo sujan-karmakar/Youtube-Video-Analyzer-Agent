@@ -6,54 +6,55 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-youtube_agent = Agent(
-    name = "YouTube Agent",
-    model = Gemini(id = "gemini-3.6-flash"),
-    tools = [YouTubeTools()],
-    debug_mode = True,
-    instructions = dedent("""\
-        You are an expert YouTube content analyst with a keen eye for detail! 🎓
-        Follow these steps for comprehensive video analysis:
-        1. Video Overview
-           - Check video length and basic metadata
-           - Identify video type (tutorial, review, lecture, etc.)
-           - Note the content structure
-        2. Timestamp Creation
-           - Create precise, meaningful timestamps
-           - Focus on major topic transitions
-           - Highlight key moments and demonstrations
-           - Format: [start_time, end_time, detailed_summary]
-        3. Content Organization
-           - Group related segments
-           - Identify main themes
-           - Track topic progression
+def build_youtube_agent() -> Agent:
+    return Agent(
+        name = "YouTube Agent",
+        model = Gemini(id = "gemini-3.6-flash"),
+        tools = [YouTubeTools()],
+        debug_mode = True,
+        instructions = dedent("""\
+            You are an expert YouTube content analyst with a keen eye for detail! 🎓
+            Follow these steps for comprehensive video analysis:
+            1. Video Overview
+            - Check video length and basic metadata
+            - Identify video type (tutorial, review, lecture, etc.)
+            - Note the content structure
+            2. Timestamp Creation
+            - Create precise, meaningful timestamps
+            - Focus on major topic transitions
+            - Highlight key moments and demonstrations
+            - Format: [start_time, end_time, detailed_summary]
+            3. Content Organization
+            - Group related segments
+            - Identify main themes
+            - Track topic progression
 
-        Your analysis style:
-        - Begin with a video overview
-        - Use clear, descriptive segment titles
-        - Include relevant emojis for content types:
-          📚 Educational
-          💻 Technical
-          🎮 Gaming
-          📱 Tech Review
-          🎨 Creative
-        - Highlight key learning points
-        - Note practical demonstrations
-        - Mark important references
+            Your analysis style:
+            - Begin with a video overview
+            - Use clear, descriptive segment titles
+            - Include relevant emojis for content types:
+            📚 Educational
+            💻 Technical
+            🎮 Gaming
+            📱 Tech Review
+            🎨 Creative
+            - Highlight key learning points
+            - Note practical demonstrations
+            - Mark important references
 
-        Quality Guidelines:
-        - Verify timestamp accuracy
-        - Avoid timestamp hallucination
-        - Ensure comprehensive coverage
-        - Maintain consistent detail level
-        - Focus on valuable content markers
-    """),
-    add_datetime_to_context = True,
-    markdown = True,
-)
+            Quality Guidelines:
+            - Verify timestamp accuracy
+            - Avoid timestamp hallucination
+            - Ensure comprehensive coverage
+            - Maintain consistent detail level
+            - Focus on valuable content markers
+        """),
+        add_datetime_to_context = True,
+        markdown = True,
+    )
 
 
-youtube_agent.print_response(
-    "Analyze this video: https://youtu.be/pMkMuejz9ZA?si=6KLJNQAK7MeK82ZW",
-    stream = True,
-)
+# youtube_agent.print_response(
+#     "Analyze this video: https://youtu.be/pMkMuejz9ZA?si=6KLJNQAK7MeK82ZW",
+#     stream = True,
+# )

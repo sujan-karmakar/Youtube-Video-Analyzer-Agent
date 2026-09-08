@@ -2,6 +2,10 @@
 
 A minor project on a AI-powered Streamlit application that analyzes YouTube videos with Google Gemini and Agno. Enter a video URL to receive a structured report covering the video overview, topic segments, timestamps, themes, key learning points, and demonstrations.
 
+## 🌐 Deployment
+
+[Youtube Analyzer](https://youtube-video-analyzer26.streamlit.app/)
+
 ## Features
 
 - Extracts and analyzes YouTube video content with `YouTubeTools`.
@@ -38,7 +42,3 @@ Open the local Streamlit URL, enter a YouTube video URL, and select **Analyze Vi
 
 - `agent.py` - Configures the Gemini-powered YouTube analysis agent.
 - `ui.py` - Provides the Streamlit user interface and runs analyses.
-
-## Deployment Link
-
-https://youtube-video-analyzer26.streamlit.app/
